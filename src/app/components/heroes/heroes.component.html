@@ -1,0 +1,37 @@
+<h1>Heroes</h1>
+<hr>
+
+<div class="row">
+    <div class="col-md-12 text-right">
+        <button [routerLink]="['/heroe','nuevo']" class="btn btn-outline-primary" type="button" name="button">
+          Nuevo Heroe
+        </button>
+    </div>
+</div>
+<br>
+
+<div class="row animated fadeIn fast">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Casa</th>
+                        <th>Opciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let k of heroes | keys; let i = index">
+                        <td>{{i+1}}</td>
+                        <td>{{heroes[k].nombre}}</td>
+                        <td>{{heroes[k].casa}}</td>
+                        <td>{{heroes[k].bio}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>
