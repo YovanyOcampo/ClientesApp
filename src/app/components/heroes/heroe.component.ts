@@ -64,7 +64,6 @@ export class HeroeComponent implements OnInit {
             console.log(error);
           });
     }
-
   }
 
   agregarNuevo(forma: NgForm) {

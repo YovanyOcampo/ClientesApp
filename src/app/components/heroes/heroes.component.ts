@@ -10,14 +10,29 @@ import { Heroe } from '../../interfaces/heroe.interface';
 export class HeroesComponent implements OnInit {
   
   heroes: any;
+  loading: boolean = true;
   constructor(private _heroesService: HeroesService) {
     this._heroesService.getHeroes()
       .subscribe(data => {
-        this.heroes = data;
-        console.log(this.heroes);
+        // console.log(this.heroes);
+          this.loading = false; 
+          this.heroes = data;
       });
   }
 
   ngOnInit() {
+  }
+
+  borrarHeroe(key$: string) {
+    this._heroesService.deleteHeroe(key$)
+      .subscribe(response => {
+        console.log(this.heroes);
+        if (response) {
+          console.log(response);
+        } else {
+          // Sucseful delete
+          delete this.heroes[key$];
+        }
+      });
   }
 }

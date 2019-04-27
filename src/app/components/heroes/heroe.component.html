@@ -1,4 +1,4 @@
-<h3>Heroe <small>nombre...</small></h3>
+<h3>Cliente <small>{{heroe.nombre}}...</small></h3>
 <hr>
 
 <button [routerLink]="['heroes']" routerLinkActive="router-link-active" class="btn btn-outline-danger">
@@ -18,23 +18,22 @@
                 <input [(ngModel)]="heroe.nombre" class="form-control" type="text" name="nombre" required>
             </div>
             <div class="form-group">
-                <label>Casa</label>
+                <label>Ciudad</label>
                 <select [(ngModel)]="heroe.casa" class="form-control" name="casa">
-                  <option value="MARVEL">MARVEL</option>
-                  <option value="DC">DC</option>
+                  <option value="ciudadUno">Ciudad 1</option>
+                  <option value="ciudadDos">Ciudad 2</option>
                 </select>
             </div>
             <div class="form-group">
-                <label>Bio</label>
+                <label>Observaciones</label>
                 <textarea [(ngModel)]="heroe.bio" type="text" name="bio" class="form-control">
                 </textarea>
             </div>
             <div class="form-group">
-                <button [disabled]="!forma.valid" type="submit" class="btn btn-primary">
+                <button routerLinkActive="router-link-active" [disabled]="!forma.valid" type="submit" class="btn btn-primary">
                   Guardar cambios
                 </button>
             </div>
-
         </form>
     </div>
 </div>

@@ -51,4 +51,12 @@ export class HeroesService {
               return res;
             }));
   }
+
+  deleteHeroe(key$: string) {
+    let url=`${this.heroeURL}/${key$}.json`;
+    return this.http.delete(url)
+            .pipe(map((res: Heroe) => {
+              return res;
+            }));
+  }
 }

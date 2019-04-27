@@ -1,10 +1,10 @@
-<h1>Heroes</h1>
+<h1>Clientes</h1>
 <hr>
 
 <div class="row">
     <div class="col-md-12 text-right">
         <button [routerLink]="['/heroe','nuevo']" class="btn btn-outline-primary" type="button" name="button">
-          Nuevo Heroe
+          Nuevo cliente
         </button>
     </div>
 </div>
@@ -18,8 +18,8 @@
                     <tr>
                         <th>#</th>
                         <th>Nombre</th>
-                        <th>Casa</th>
-                        <th>Opciones</th>
+                        <th>Ciudad</th>
+                        <th class="text-right">Opciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,10 +27,24 @@
                         <td>{{i+1}}</td>
                         <td>{{heroes[k].nombre}}</td>
                         <td>{{heroes[k].casa}}</td>
-                        <td>{{heroes[k].bio}}</td>
+                        <td class="text-right">
+                            <button [routerLink]="['/heroe', k]" type="button" class="btn btn-outline-success">
+                                Editar
+                            </button>
+                            <span>&nbsp;&nbsp;</span>
+                            <button (click)="borrarHeroe(k)" type="button" class="btn btn-outline-danger">
+                                Eliminar
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
+            <div *ngIf="((heroes | keys).length === 0) && !loading" class="alert alert-info" role="alert">
+                <strong>Sin registros en BD</strong>
+            </div>
+            <div *ngIf="loading" class="alert alert-info" role="alert">
+                <strong>Cargando...</strong> Por favor espere
+            </div>
             <hr>
         </div>
     </div>
